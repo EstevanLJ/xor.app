@@ -24,7 +24,7 @@ Route::get('/lte/login', function () {
 });
 
 Route::get('/lte/register', function () {
-    return view('auth.lte-login');
+    return view('auth.lte-register');
 });
 
 Auth::routes();

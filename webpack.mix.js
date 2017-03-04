@@ -12,6 +12,4 @@ const { mix } = require('laravel-mix');
  */
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
-   .js('resources/assets/js/app.js', 'public/js')
-   .sass('node_modules/icheck/skins/square/blue.css', 'public/css/plugins/icheck')
-   .js('node_modules/icheck/icheck.js', 'public/js/plugins/icheck');
+   .js('resources/assets/js/app.js', 'public/js');

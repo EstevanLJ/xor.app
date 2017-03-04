@@ -50,4 +50,4 @@ window.axios.defaults.headers.common = {
  * Importa o js iCheck
  * 
  */
-// window.icheck = require('icheck');
+window.iCheck = require('icheck');
