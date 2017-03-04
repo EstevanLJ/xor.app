@@ -10,14 +10,16 @@
   <link rel="stylesheet" href="{{asset('/css/app.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('/css/AdminLTE.min.css')}}">
+
   <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="{{asset('/css/plugins/icheck/blue.css')}}">
+  {{-- <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css"> --}}
 
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html"><b>XOR</b> App</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -48,13 +50,13 @@
       </div>
     </form>
 
-    <div class="social-auth-links text-center">
+    {{-- <div class="social-auth-links text-center">
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
-    </div>
+    </div> --}}
     <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
@@ -65,12 +67,12 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery 2.2.3 -->
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- Dependencies -->
+<script src="{{asset('/js/app.js')}}"></script>
+<script src="{{asset('/js/plugins/icheck/icheck.js')}}"></script>
+
 <script>
   $(function () {
     $('input').iCheck({

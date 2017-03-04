@@ -26,3 +26,4 @@ require('./bootstrap');
  * 
  */
 require('./layout.js');
+
