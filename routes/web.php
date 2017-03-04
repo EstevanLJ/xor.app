@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/url', function () {
+    return view('partials.list');
+});
+
+Route::get('/url/create', function () {
+    return view('partials.form');
+});
+
+Route::get('/lte/login', function () {
+    return view('auth.lte-login');
+});
+
+Route::get('/lte/register', function () {
+    return view('auth.lte-login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
+
