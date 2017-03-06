@@ -10,6 +10,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>XOR App | The URL Shorter!</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Scripts -->
   <script>
@@ -233,7 +235,16 @@ desired effect
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-sign-out"></i> Logout</a>
+            <a data-toggle="control-sidebar" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+
           </li>
         </ul>
       </div>

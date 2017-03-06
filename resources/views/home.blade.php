@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('username', Auth::guest() ? 'Guest' : Auth::user()->name)
 
 @section('content')
 <div class="container">
