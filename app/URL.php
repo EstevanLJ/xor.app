@@ -11,4 +11,8 @@ class URL extends Model
     protected $fillable = [
         'full', 'short', 'description'
     ];
+
+    public function getShortUrl() {
+        return URL::to('/'.$this->short);
+    }
 }

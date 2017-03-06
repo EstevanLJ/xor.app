@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('username', 'Admin')
+@section('username', Auth::guest() ? 'Guest' : Auth::user()->name)
 
 @section('content')
 
-    <div class="row">
+    <div id="main-panel" class="row" style="display: none">
         <div class="col-md-offset-3 col-md-6">
           <!-- Horizontal Form -->
           <div class="box box-primary">
@@ -13,7 +13,10 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('/url') }}">
+
+              {{csrf_field()}}
+
               <div class="box-body">
                 <div class="form-group">
                   <label for="desc" class="col-sm-2 control-label">Description</label>
@@ -26,7 +29,7 @@
                   <label for="url" class="col-sm-2 control-label">URL</label>
 
                   <div class="col-sm-10">
-                    <input id="url" name="url" type="text" class="form-control" placeholder="The long URL you want to short">
+                    <input id="url" name="full" type="text" class="form-control" placeholder="The long URL you want to short">
                   </div>
                 </div>
 
@@ -43,4 +46,15 @@
     </div>
 
 @endsection
+
+@push('script')
+
+    <script>
+    
+        $( document ).ready(function() {
+          $('#main-panel').fadeIn();
+        });
+    
+    </script>
+@endpush
 

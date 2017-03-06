@@ -1,10 +1,14 @@
 @extends('layouts.master')
 
-@section('username', 'Admin')
+@section('username', Auth::guest() ? 'Guest' : Auth::user()->name)
 
 @section('content')
 
-    <div class="row">
+    <script>
+        window.Laravel.URLto = {!! json_encode(URL::to('/@{{short}}')) !!};
+    </script>
+
+    <div class="row" id="main-panel" style="display: none">
         <div class="col-md-offset-2 col-md-8">
             <div class="box">
                 <div class="box-header">
@@ -17,25 +21,16 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
-                            <th>Task</th>
-                            <th>Progress</th>
-                            <th style="width: 40px">Label</th>
+                            <th>Description</th>
+                            <th>URL</th>                                
+                            <th>Accesses</th>                                
+                            <th>Copy</th>                                
+                            <th>Delete</th>   
                         </tr>
                     </thead>                
 
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-red">55%</span></td>
-                        </tr>
-                    </tbody>
-                
+                    <tbody id="table-body">
+                    </tbody>                
                 
               </table>
             </div>
@@ -46,3 +41,58 @@
     </div>
 
 @endsection
+
+@push('script')
+
+    <script>
+        $( document ).ready(function() {
+            let baseUrl = window.Laravel.URLto;
+
+            $('#nav-listaURL').addClass('selected');
+
+            let urls = [];
+            axios.get('/url/axios').then((response) => {
+                response.data.forEach((url) => {
+                    let short_url = _.replace(baseUrl, '@{{short}}', url.short);
+
+                    $('#table-body').append(`
+                        <tr>
+                            <th scope="row">${url.id}</th>
+                            <th>${url.description}</th>
+                            <th><a target="_blank" href="${short_url}">${short_url}</a></th>                                
+                            <th id="url_${url.id}">${url.counter}</th>
+                            <th>
+                                <button class="btn btn-default btn_copiar" value="${short_url}">Copy</button>
+                            </th>  
+                            <th>
+                                <button class="btn btn-default btn_remover" value="${url.id}"><i class="fa fa-trash-o"></i></button>                                        
+                            </th>  
+                        </tr>                
+                    `);
+                });   
+
+                $('.btn_copiar').click((event) => {
+                    var $temp = $("<input>");
+                    $("body").append($temp);
+                    $temp.val(event.target.value).select();
+                    document.execCommand("copy");
+                    $temp.remove();
+                });
+
+                $('.btn_remover').click((event) => {
+                    let res = confirm('Tem certeza que deseja remover?')
+
+                    if(res){
+                        axios.delete('/url/'+event.target.value)
+                            .then(() => {
+                                location.reload();
+                            });
+                    } 
+                });
+
+                $('#main-panel').fadeIn();
+            });
+        });
+    
+    </script>
+@endpush

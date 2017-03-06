@@ -13,14 +13,24 @@
 
 Auth::routes();
 
-Route::get('/url', function () {
-    return view('partials.list');
+Route::get('/', 'HomeController@index');
+
+Route::get('/show', function(){
+    $urls = App\URL::all();
+    return view('partials.show', compact('urls'));
 });
 
-Route::get('/url/create', function () {
-    return view('partials.form');
-});
+/* URLs */
+Route::get('/url', 'URLController@index');
+Route::get('/url/axios', 'URLController@getAll');
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/url/create', 'URLController@create');
+Route::post('/url', 'URLController@store');
+
+Route::get('/url/{url}', 'URLController@show');
+Route::delete('/url/{url}', 'URLController@destroy');
+
+
+/* Redirect */
+Route::get('/{short}', 'RedirectController@redirectURL');
+
