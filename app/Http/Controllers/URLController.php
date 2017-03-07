@@ -20,19 +20,8 @@ class URLController extends Controller
 
     public function index()
     {
-        return view('partials.list');
-    }
-
-    public function getAll()
-    {
         $urls = URL::where('user_id', Auth::id())->get();
         return response()->json($urls);
-    }
-
-    
-    public function create()
-    {
-        return view('partials.form');
     }
 
     
@@ -66,7 +55,7 @@ class URLController extends Controller
 
         $url->save();
 
-        return redirect('/url/'.$url->id);
+        return response()->json(['msg' => 'ok']);
     }
 
     /**
@@ -81,7 +70,7 @@ class URLController extends Controller
             return redirect('/url');    
         }
 
-        return view('partials.show', compact('url'));
+        return response()->json($url);
     }
 
     /**
@@ -97,6 +86,7 @@ class URLController extends Controller
         }
         
         $url->delete();
+
         return response()->json(['msg' => 'ok']);
     }
 }

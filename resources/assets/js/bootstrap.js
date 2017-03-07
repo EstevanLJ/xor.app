@@ -51,3 +51,10 @@ window.axios.defaults.headers.common = {
  * 
  */
 window.iCheck = require('icheck');
+
+/**
+ * 
+ * Importa o AngularJS
+ * 
+ */
+window.angular = require('angular');

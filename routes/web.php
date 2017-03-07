@@ -20,17 +20,14 @@ Route::get('/show', function(){
     return view('partials.show', compact('urls'));
 });
 
-/* URLs */
-Route::get('/url', 'URLController@index');
-Route::get('/url/axios', 'URLController@getAll');
+Route::get('/view/url', 'AngularController@index');
+Route::get('/view/url/create', 'AngularController@create');
 
-Route::get('/url/create', 'URLController@create');
-Route::post('/url', 'URLController@store');
 
-Route::get('/url/{url}', 'URLController@show');
-Route::delete('/url/{url}', 'URLController@destroy');
+
+// Route::get('/view/url/{url}', 'URLController@show');
 
 
 /* Redirect */
-Route::get('/{short}', 'RedirectController@redirectURL');
+//Route::get('/{short}', 'RedirectController@redirectURL');
 
