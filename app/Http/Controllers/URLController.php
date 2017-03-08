@@ -18,6 +18,16 @@ class URLController extends Controller
         $this->middleware('auth');
     }
 
+    public function listView()
+    {
+        return view('partials.list');
+    }
+
+    public function formView()
+    {
+        return view('partials.form');
+    }
+
     public function index()
     {
         $urls = URL::where('user_id', Auth::id())->get();
@@ -55,7 +65,7 @@ class URLController extends Controller
 
         $url->save();
 
-        return response()->json(['msg' => 'ok']);
+        return redirect('/view/url/'.$url->id);
     }
 
     /**
@@ -70,7 +80,7 @@ class URLController extends Controller
             return redirect('/url');    
         }
 
-        return response()->json($url);
+        return view('partials.show', compact('url'));
     }
 
     /**
@@ -82,11 +92,11 @@ class URLController extends Controller
     public function destroy(URL $url)
     {
         if($url->user_id != Auth::id()){
-            return redirect('/url');    
+            return response()->json(['success' => false]);    
         }
         
         $url->delete();
 
-        return response()->json(['msg' => 'ok']);
+        return response()->json(['success' => true]);
     }
 }

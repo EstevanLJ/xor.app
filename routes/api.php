@@ -18,8 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-/* URLs */
-Route::get('/url', 'URLController@index');
-Route::post('/url', 'URLController@store');
-Route::delete('/url/{url}', 'URLController@destroy');
+
 

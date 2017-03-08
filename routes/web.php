@@ -15,19 +15,16 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/show', function(){
-    $urls = App\URL::all();
-    return view('partials.show', compact('urls'));
-});
+/* Views */
+Route::get('/view/url', 'URLController@listView');
+Route::get('/view/url/create', 'URLController@formView');
+Route::get('/view/url/{url}', 'URLController@show');
 
-Route::get('/view/url', 'AngularController@index');
-Route::get('/view/url/create', 'AngularController@create');
-
-
-
-// Route::get('/view/url/{url}', 'URLController@show');
-
+/* URLs */
+Route::get('/url', 'URLController@index');
+Route::post('/url', 'URLController@store');
+Route::delete('/url/{url}', 'URLController@destroy');
 
 /* Redirect */
-//Route::get('/{short}', 'RedirectController@redirectURL');
+Route::get('/{short}', 'RedirectController@redirectURL');
 

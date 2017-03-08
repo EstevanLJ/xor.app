@@ -18,7 +18,7 @@
                     <br>
 
                     <button id="btn_copiar" class="btn btn-primary" value="{{URL::to('/'.$url->short)}}">Copy URL</button>
-                    <a id="btn_copiar" class="btn btn-default pull-right" href="{{URL::to('/url')}}">Back to list</a>
+                    <a id="btn_copiar" class="btn btn-default pull-right" href="{{URL::to('/view/url')}}">Back to list</a>
                     
                 </div>
             </div>
@@ -34,7 +34,6 @@
         $( document ).ready(function() {
 
            $('#btn_copiar').click((event) => {
-               console.log('oi')
                var $temp = $("<input>");
                $("body").append($temp);
                $temp.val(event.target.value).select();

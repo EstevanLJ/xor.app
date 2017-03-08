@@ -65,8 +65,8 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-{{-- Inicia o AngularJS com o modulo "xorApp" --}}
-<body class="hold-transition skin-blue-light sidebar-mini" ng-app="xorApp">
+
+<body class="hold-transition skin-blue-light sidebar-mini">
 <div class="wrapper">
 
   <!-- Main Header -->

@@ -51,7 +51,7 @@
             $('#nav-listaURL').addClass('selected');
 
             let urls = [];
-            axios.get('/url/axios').then((response) => {
+            axios.get('/url').then((response) => {
                 response.data.forEach((url) => {
                     let short_url = _.replace(baseUrl, '@{{short}}', url.short);
 
@@ -80,9 +80,7 @@
                 });
 
                 $('.btn_remover').click((event) => {
-                    let res = confirm('Tem certeza que deseja remover?')
-
-                    if(res){
+                    if(confirm('Tem certeza que deseja remover?')){
                         axios.delete('/url/'+event.target.value)
                             .then(() => {
                                 location.reload();
