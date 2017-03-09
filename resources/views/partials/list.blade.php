@@ -17,6 +17,12 @@
             <!-- /.box-header -->
             <div class="box-body no-padding">
 
+                @if (session('status'))
+                    <div class="alert alert-danger">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -51,7 +57,7 @@
             $('#nav-listaURL').addClass('selected');
 
             let urls = [];
-            axios.get('/url').then((response) => {
+            axios.get('/api/url').then((response) => {
                 response.data.forEach((url) => {
                     let short_url = _.replace(baseUrl, '@{{short}}', url.short);
 

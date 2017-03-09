@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\URL;
 
@@ -76,8 +77,8 @@ class URLController extends Controller
      */
     public function show(URL $url)
     {
-        if($url->user_id != Auth::id()){
-            return redirect('/url');    
+        if (Gate::denies('show-url', $url)) {
+             return redirect('/view/url')->with('status', 'You cannot see that URL!');    
         }
 
         return view('partials.show', compact('url'));
@@ -91,8 +92,8 @@ class URLController extends Controller
      */
     public function destroy(URL $url)
     {
-        if($url->user_id != Auth::id()){
-            return response()->json(['success' => false]);    
+        if (Gate::denies('remove-url', $url)) {
+            return response()->json(['success' => false]);   
         }
         
         $url->delete();

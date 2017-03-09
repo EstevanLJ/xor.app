@@ -8,6 +8,10 @@
   <li class="{{ currentUriEquals('view/url') ? 'active' : ''}}">
     <a href="{{ URL::to('/view/url') }}"><i class="fa fa-bars"></i> <span>Your URLs</span></a>
   </li>
+
+  <li class="{{ currentUriEquals('view/user') ? 'active' : ''}}">
+    <a href="{{ URL::to('/view/user') }}"><i class="fa fa-user"></i> <span>Profile</span></a>
+  </li>
   
   {{-- <li class="treeview">
     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

@@ -19,11 +19,15 @@ Route::get('/', 'HomeController@index');
 Route::get('/view/url', 'URLController@listView');
 Route::get('/view/url/create', 'URLController@formView');
 Route::get('/view/url/{url}', 'URLController@show');
+Route::get('/view/user', 'UserController@edit');
 
 /* URLs */
-Route::get('/url', 'URLController@index');
-Route::post('/url', 'URLController@store');
-Route::delete('/url/{url}', 'URLController@destroy');
+Route::get('/api/url', 'URLController@index');
+Route::post('/api/url', 'URLController@store');
+Route::delete('/api/url/{url}', 'URLController@destroy');
+Route::put('/api/user/{user}', 'UserController@update');
+
+/* Users */
 
 /* Redirect */
 Route::get('/{short}', 'RedirectController@redirectURL');
