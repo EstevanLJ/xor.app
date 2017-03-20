@@ -13,7 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', function(){
+    return view('base');
+});
+
+Route::get('/index', 'HomeController@index');
 
 /* Views */
 Route::get('/view/url', 'URLController@listView');
@@ -30,5 +34,9 @@ Route::put('/api/user/{user}', 'UserController@update');
 /* Users */
 
 /* Redirect */
-Route::get('/{short}', 'RedirectController@redirectURL');
+//Route::get('/{short}', 'RedirectController@redirectURL');
+
+Route::get('/{url}', function(){
+    return view('base');
+});
 

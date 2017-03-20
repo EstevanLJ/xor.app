@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11162,7 +11162,7 @@ process.umask = function() { return 0; };
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(31);
+__webpack_require__(32);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -11182,7 +11182,17 @@ __webpack_require__(31);
  * Importa o app.js do template AdminLTE 2
  * 
  */
-__webpack_require__(32);
+__webpack_require__(33);
+
+/**
+ * 
+ * Importa a aplicao do AngularJS
+ * 
+ */
+__webpack_require__(31);
+// require('./angular/controllers/formControl.js');
+// require('./angular/controllers/listControl.js');
+// require('./angular/controllers/userControl.js');
 
 /***/ }),
 /* 10 */
@@ -45180,10 +45190,31 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 31 */
+/***/ (function(module, exports) {
+
+var xorApp = angular.module('xorApp', ['ngRoute']);
+
+xorApp.config(function ($routeProvider, $locationProvider) {
+
+    $locationProvider.html5Mode(true);
+
+    $routeProvider.when("/", {
+        templateUrl: "/index"
+    }).when("/form", {
+        templateUrl: "/view/url/create"
+    }).when("/list", {
+        templateUrl: "/view/url"
+    }).when("/user", {
+        templateUrl: "/view/user"
+    });
+});
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(35);
+window._ = __webpack_require__(36);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -45193,7 +45224,7 @@ window._ = __webpack_require__(35);
 
 window.$ = window.jQuery = __webpack_require__(1);
 
-__webpack_require__(33);
+__webpack_require__(34);
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
@@ -45234,7 +45265,7 @@ window.axios.defaults.headers.common = {
  * Importa o js iCheck
  * 
  */
-window.iCheck = __webpack_require__(34);
+window.iCheck = __webpack_require__(35);
 
 /**
  * 
@@ -45244,7 +45275,7 @@ window.iCheck = __webpack_require__(34);
 window.angular = __webpack_require__(12);
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($, jQuery) {/*! AdminLTE app.js
@@ -45402,7 +45433,7 @@ function _init() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(1)))
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -47786,7 +47817,7 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 /*!
@@ -48301,7 +48332,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -65390,10 +65421,10 @@ if (typeof jQuery === 'undefined') {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36), __webpack_require__(37)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37), __webpack_require__(38)(module)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 var g;
@@ -65420,7 +65451,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -65448,7 +65479,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);

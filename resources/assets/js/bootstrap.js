@@ -57,4 +57,4 @@ window.iCheck = require('icheck');
  * Importa o AngularJS
  * 
  */
-// window.angular = require('angular');
+window.angular = require('angular');
